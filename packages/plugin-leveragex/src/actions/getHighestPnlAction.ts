@@ -11,9 +11,13 @@ import { fetchStatsService } from '../services'
 import { getHighestPnlAndFormat } from '../utils/getHighestPnlAndFormat'
 
 export const getHighestPnlAction: Action = {
-  name: "GET_BIGGEST_PNL",
+  name: "GET_HIGHEST_PNL_TRADE",
   similes: [
-
+    "HIGHEST_PNL",
+    "TOP_PROFIT_TRADE",
+    "BEST_TRADING_PNL",
+    "MAX_PROFIT_TRADE",
+    "BIGGEST_WINNING_TRADE",
   ],
   description: "Get the trade of which pnl is the biggest",
   validate: async () => {
