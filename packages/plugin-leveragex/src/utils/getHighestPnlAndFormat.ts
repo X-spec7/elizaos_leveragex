@@ -42,7 +42,6 @@ export const getHighestPnlAndFormat = (trades: ITrade[]) => {
 🛑 Stop Loss (SL): ${sl}
 
 ⏳ Trade Created At Block: ${tradeInfo.createdBlock}
-🕒 Last Updated: ${new Date(parseInt(tradeInfo.lastOiUpdatedTs) * 1000).toLocaleString()}
 💰 Collateral Price at Entry: $${tradeInfo.collateralPriceUsd.toFixed(2)}
 
 ⚠️ Note: Ensure proper risk management to maximize profits while minimizing risks. 🚀`
