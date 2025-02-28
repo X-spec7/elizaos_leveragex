@@ -37,19 +37,6 @@ export const getHighestPnlAction: Action = {
 
     console.log('🎯 Processing message:', message.content)
 
-    // const pnlContext = composeContext({
-    //   state,
-    //   template: getHighestPnLTradeTemplate,
-    // })
-
-    // console.log('📝 Generated context:', pnlContext)
-
-    // const content = await generateMessageResponse({
-    //   runtime,
-    //   context: pnlContext,
-    //   modelClass: ModelClass.LARGE
-    // })
-
     const { fetchTrades } = fetchStatsService()
 
     try {

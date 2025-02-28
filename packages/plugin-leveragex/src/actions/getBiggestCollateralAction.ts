@@ -49,7 +49,7 @@ export const getBiggestCollateralAction: Action = {
 
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
       callback({
-        text: `I encountered an error while fetching trades statistics:\n${errorMessage}\n\nPlease try again.`,
+        text: `I encountered an error while fetching collaterals statistics:\n${errorMessage}\n\nPlease try again.`,
       })
     }
   },
