@@ -3,7 +3,8 @@ import {
   getExtremeCollateralAction,
   getExtremePnlAction,
   getExtremeTradingFeePairAction,
-  getMostOpenTradesPairAction
+  getMostOpenTradesPairAction,
+  getOpenTradeTrendAction
 } from './actions'
 
 export const leveragexPlugin: Plugin = {
@@ -16,6 +17,7 @@ export const leveragexPlugin: Plugin = {
     getExtremeCollateralAction,
     getExtremePnlAction,
     getExtremeTradingFeePairAction,
-    getMostOpenTradesPairAction
+    getMostOpenTradesPairAction,
+    getOpenTradeTrendAction
   ],
 }
