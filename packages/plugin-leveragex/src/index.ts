@@ -4,7 +4,10 @@ import {
   getExtremePnlAction,
   getExtremeTradingFeePairAction,
   getMostOpenTradesPairAction,
-  getOpenTradeTrendAction
+  getOpenTradeTrendAction,
+  getPoLOpenTradesCountAction,
+  getTradeCountForPairAction,
+  getTradingPairFeeAction
 } from './actions'
 
 export const leveragexPlugin: Plugin = {
@@ -18,6 +21,9 @@ export const leveragexPlugin: Plugin = {
     getExtremePnlAction,
     getExtremeTradingFeePairAction,
     getMostOpenTradesPairAction,
-    getOpenTradeTrendAction
+    getOpenTradeTrendAction,
+    getPoLOpenTradesCountAction,
+    getTradeCountForPairAction,
+    getTradingPairFeeAction
   ],
 }
