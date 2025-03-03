@@ -1,7 +1,8 @@
 import type { Plugin } from "@elizaos/core";
 import {
   getExtremeCollateralAction,
-  getExtremePnlAction
+  getExtremePnlAction,
+  getExtremeTradingFeePairAction
 } from './actions'
 
 export const leveragexPlugin: Plugin = {
@@ -13,5 +14,6 @@ export const leveragexPlugin: Plugin = {
   actions: [
     getExtremeCollateralAction,
     getExtremePnlAction,
+    getExtremeTradingFeePairAction
   ],
 }

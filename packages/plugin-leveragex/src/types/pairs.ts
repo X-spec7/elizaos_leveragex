@@ -4,6 +4,7 @@ export interface FetchPairsResponseDTO {
   isStocksOpen: boolean
   isCommoditiesOpen: boolean
   isCryptoOpen: boolean
+  pairs: IPair[]
   limits: ILimit[]
   groupFees: IGroupFee[]
   groupLps: IGroupLP[]
