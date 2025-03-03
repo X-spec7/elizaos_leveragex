@@ -1,14 +1,23 @@
-import { ICollateral } from '../types'
+import { ICollateral } from "../types"
 
-export const getBiggestCollateralAndFormat = (collaterals: ICollateral[]) => {
+interface IGetExtremeCollateralAndFormatProps {
+  collaterals: ICollateral[]
+  status: "highest" | "lowest"
+}
+
+export const getExtremeCollateralAndFormat = ({
+  collaterals,
+  status
+}: IGetExtremeCollateralAndFormatProps) => {
   if (!collaterals || collaterals.length === 0) {
     return "No collateral data available."
   }
-
   // Find the collateral with the largest 'collateralInSc'
-  const biggestCollateral = collaterals.reduce((maxCollateral, collateral) => 
-    collateral.collateralInSc > maxCollateral.collateralInSc ? collateral : maxCollateral, collaterals[0]
-  )
+  const extremeCollateral = collaterals.reduce((extreme, collateral) => {
+    return status === "highest"
+      ? collateral.collateralInSc > extreme.collateralInSc ? collateral : extreme
+      : collateral.collateralInSc < extreme.collateralInSc ? collateral : extreme
+  }, collaterals[0])
 
   const {
     collateral,
@@ -24,9 +33,9 @@ export const getBiggestCollateralAndFormat = (collaterals: ICollateral[]) => {
     fees,
     lastDayEarned,
     last7DaysEarned,
-  } = biggestCollateral
+  } = extremeCollateral
 
-  return `💎 Biggest Collateral Summary:
+  return `💎 ${status === 'highest' ? 'Biggest' : 'Lowest'} Collateral Summary:
 
 🔑 Collateral Name: ${collateralName} (${collateral})
 💸 Collateral in Smart Contract (SC): ${collateralInSc.toFixed(2)} ${collateralName}

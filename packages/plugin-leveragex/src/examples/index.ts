@@ -1,2 +1,2 @@
 export * from './getHighestPnlExample'
-export * from './getBiggestCollateralExample'
+export * from './getExtremeCollateralExample'

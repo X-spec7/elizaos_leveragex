@@ -1,3 +1,3 @@
 export * from './debug'
 export * from './getHighestPnlAndFormat'
-export * from './getBiggestCollateralAndFormat'
+export * from './getExtremeCollateralAndFormat'
