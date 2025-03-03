@@ -1,14 +1,21 @@
 import { ITrade } from "../types"
 
-export const getHighestPnlAndFormat = (trades: ITrade[]) => {
+interface IGetExtremePnlAndFormatProps {
+  trades: ITrade[]
+  status: "highest" | "lowest"
+}
+
+export const getExtremePnlAndFormat = ({ trades, status }: IGetExtremePnlAndFormatProps) => {
   if (!trades || trades.length === 0) {
     return "No trades available."
   }
 
-  // Find the trade with the highest PnL percentage
-  const highestPnlTrade = trades.reduce((maxTrade, trade) => 
-    trade.pnLPercent > maxTrade.pnLPercent ? trade : maxTrade, trades[0]
-  )
+  // Find the trade with the highest or lowest PnL percentage
+  const extremePnlTrade = trades.reduce((extreme, trade) => {
+    return status === "highest"
+      ? trade.pnLPercent > extreme.pnLPercent ? trade : extreme
+      : trade.pnLPercent < extreme.pnLPercent ? trade : extreme
+  }, trades[0])
 
   const {
     user,
@@ -25,9 +32,9 @@ export const getHighestPnlAndFormat = (trades: ITrade[]) => {
     sl,
     tradeType,
     tradeInfo,
-  } = highestPnlTrade
+  } = extremePnlTrade
 
-  return `📈 Highest PnL Trade Summary:
+  return `📊 ${status === 'highest' ? 'Highest' : 'Lowest'} PnL Trade Summary:
 
 👤 Trader: ${user}
 🔹 Pair: ${pair} (${pairGroupName})
@@ -42,8 +49,7 @@ export const getHighestPnlAndFormat = (trades: ITrade[]) => {
 🛑 Stop Loss (SL): ${sl}
 
 ⏳ Trade Created At Block: ${tradeInfo.createdBlock}
-🕒 Last Updated: ${new Date(parseInt(tradeInfo.lastOiUpdatedTs) * 1000).toLocaleString()}
 💰 Collateral Price at Entry: $${tradeInfo.collateralPriceUsd.toFixed(2)}
 
-⚠️ Note: Ensure proper risk management to maximize profits while minimizing risks. 🚀`
+⚠️ Note: Ensure proper risk management when trading. 🚀`
 }

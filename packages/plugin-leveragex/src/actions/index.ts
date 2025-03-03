@@ -1,2 +1,2 @@
-export * from './getHighestPnlAction'
+export * from './getExtremePnlAction'
 export * from './getExtremeCollteralAction'
